@@ -54,19 +54,24 @@ button:hover {
 }
 
 .schedule-item {
-    list-style-type: none;
+    list-style: none;
     margin: 0;
     padding: 0;
 }
 
 .schedule-item li {
     margin: 5px 0;
+    position: relative;
+    padding-left: 20px;
 }
 
 .schedule-item li::before {
-    content: '• ';
+    content: '•';
     color: #007bff;
-    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 20px;
 }
 
 .modal {
@@ -80,14 +85,21 @@ button:hover {
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     z-index: 1000;
+    width: 300px;
 }
 
 .modal h2 {
     margin-top: 0;
 }
 
+.modal input[type="password"],
+.modal input[type="date"],
 .modal textarea {
     width: 100%;
+    margin-bottom: 10px;
+}
+
+.modal textarea {
     height: 100px;
 }
 
@@ -99,10 +111,10 @@ button:hover {
     background-color: #218838;
 }
 
-#cancel {
+#password-cancel {
     background-color: #dc3545;
 }
 
-#cancel:hover {
+#password-cancel:hover {
     background-color: #c82333;
 }

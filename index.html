@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2-4 일정</title>
+    <title>2주 일정 관리</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -14,7 +14,7 @@
 
     <div id="calendar-container" class="hidden">
         <div id="calendar-controls">
-            <button id="add-schedule">일정 추가</button>
+            <button id="add-schedule" class="hidden">일정 추가</button>
         </div>
         <div id="calendar"></div>
     </div>
@@ -27,6 +27,13 @@
         <textarea id="schedule-description"></textarea>
         <button id="save-schedule">저장</button>
         <button id="cancel">취소</button>
+    </div>
+
+    <div id="password-modal" class="modal hidden">
+        <h2>비밀번호 입력</h2>
+        <input type="password" id="password-input" placeholder="비밀번호">
+        <button id="password-submit">확인</button>
+        <button id="password-cancel">취소</button>
     </div>
 
     <script src="script.js"></script>

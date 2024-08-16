@@ -9,21 +9,42 @@ document.addEventListener('DOMContentLoaded', () => {
     const scheduleDateInput = document.getElementById('schedule-date');
     const scheduleDescriptionInput = document.getElementById('schedule-description');
     const modalTitle = document.getElementById('modal-title');
+    const passwordModal = document.getElementById('password-modal');
+    const passwordInput = document.getElementById('password-input');
+    const passwordSubmitButton = document.getElementById('password-submit');
+    const passwordCancelButton = document.getElementById('password-cancel');
     
+    const correctPassword = '1014';
     let editMode = false;
-    
+
     viewModeButton.addEventListener('click', () => {
-        editMode = false;
+        if (editMode) return; // If already in edit mode, do nothing
         calendarContainer.classList.remove('hidden');
+        addScheduleButton.classList.add('hidden'); // Hide add schedule button in view mode
         renderCalendar();
         scheduleModal.classList.add('hidden');
+        passwordModal.classList.add('hidden');
     });
 
     editModeButton.addEventListener('click', () => {
-        editMode = true;
-        calendarContainer.classList.remove('hidden');
-        renderCalendar();
-        scheduleModal.classList.add('hidden');
+        passwordModal.classList.remove('hidden');
+    });
+
+    passwordCancelButton.addEventListener('click', () => {
+        passwordModal.classList.add('hidden');
+    });
+
+    passwordSubmitButton.addEventListener('click', () => {
+        const enteredPassword = passwordInput.value;
+        if (enteredPassword === correctPassword) {
+            passwordModal.classList.add('hidden');
+            editMode = true;
+            calendarContainer.classList.remove('hidden');
+            addScheduleButton.classList.remove('hidden'); // Show add schedule button in edit mode
+            renderCalendar();
+        } else {
+            alert('비밀번호가 맞지 않습니다.');
+        }
     });
 
     addScheduleButton.addEventListener('click', () => {
@@ -73,6 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
             schedules.forEach(schedule => {
                 const listItem = document.createElement('li');
                 listItem.textContent = schedule;
+
                 if (editMode) {
                     const deleteButton = document.createElement('button');
                     deleteButton.textContent = '삭제';
